@@ -10,6 +10,12 @@
 <body>
 <div class="container">
 	<div class="well text-center">
+		<span class="big-dice icon-Dice-d4-Opaque"></span>
+		<span class="big-dice icon-Dice-d6-Opaque"></span>
+		<span class="big-dice icon-Dice-d8-Opaque"></span>
+		<span class="big-dice icon-Dice-d10-Opaque"></span>
+		<span class="big-dice icon-Dice-d12-Opaque"></span>
+		<span class="big-dice icon-Dice-d20-Opaque"></span><br><br>
 		<form class="form-inline" id="forml" action="" onsubmit="return(roleada())" method="POST">
 
 			Tipo de dados  <select class="form-control" id="tipo">
@@ -24,7 +30,9 @@
 			Cantidad  <input class="form-control" type="number" id="cant">
 			<button type="submit" class="btn btn-default">Roll</button>
 		</form>
+		
 	</div>
+
 	<span id="show">
 	</span>
 </div>

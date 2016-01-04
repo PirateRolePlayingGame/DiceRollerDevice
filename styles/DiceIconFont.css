@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('fonts/icomoon.eot?vn749a');
-    src:    url('fonts/icomoon.eot?vn749a#iefix') format('embedded-opentype'),
-        url('fonts/icomoon.ttf?vn749a') format('truetype'),
-        url('fonts/icomoon.woff?vn749a') format('woff'),
-        url('fonts/icomoon.svg?vn749a#icomoon') format('svg');
+    src:    url('../fonts/icomoon.eot?vn749a');
+    src:    url('../fonts/icomoon.eot?vn749a#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?vn749a') format('truetype'),
+        url('../fonts/icomoon.woff?vn749a') format('woff'),
+        url('../fonts/icomoon.svg?vn749a#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -44,5 +44,5 @@
 }
 
 .big-dice{
-    font-size: 70px;
+    font-size: 45px;
 }

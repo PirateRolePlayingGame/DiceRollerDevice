@@ -70,16 +70,17 @@ else
 	$cant = $result2['cantidad'];
 	$tipo = $result2['tipoDados'];
 	$sum = 0;
+	echo '<div class="text-center container well">';
 	for($i=0;$i<$cant;$i++)
 	{
 		$sum += $result[$i]["roll"];
 		if(($i+1) % 3 == 0)
 		{
-			echo $result[$i]["roll"] . "<br> <br>";	
+			echo '<font size="4">' . $result[$i]["roll"] . '</font>' . "<br> <br>";	
 		}
 		else
 		{
-			echo $result[$i]["roll"] . "&nbsp &nbsp &nbsp";
+			echo '<font size="4">' . $result[$i]["roll"] . '</font>' . "&nbsp &nbsp &nbsp";
 		}
 	}
 
@@ -104,9 +105,10 @@ else
 			$tipo = '<span class="big-dice icon-Dice-d20-Opaque"></span>';
 			break;
 	}
-	echo "<h2>" . $tipo . $sum . "</h2><br>";
 
+	echo '<h2 class="jumbotron">' . $tipo . $sum . "</h2><br>";
 
+	echo '</div>';
 
 }
 ?>
