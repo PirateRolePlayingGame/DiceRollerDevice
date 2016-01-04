@@ -71,10 +71,16 @@ else
 	for($i=0;$i<$result2;$i++)
 	{
 		$sum += $result[$i]["roll"];
-		echo $result[$i]["roll"] . "<br>";
-		echo "<br>";
+		if(($i+1) % 3 == 0)
+		{
+			echo $result[$i]["roll"] . "<br> <br>";	
+		}
+		else
+		{
+			echo $result[$i]["roll"] . "&nbsp &nbsp &nbsp";
+		}
 	}
-	echo "<h3>".$sum . "</h3><br>";
+	echo "<h2>".$sum . "</h2><br>";
 
 
 
