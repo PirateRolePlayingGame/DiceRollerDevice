@@ -25,48 +25,58 @@
 
 	date_default_timezone_set("UTC");
 	$db = Db::getInstance();
-
-$res2 = $db->query('SELECT * from variables;');	
-$result2 = $res2->fetch();
-$time = abs(time() - $result2['tiempo']);
-if($time > 5)
+if(isset($_POST['tipo']))
 {
 
-	$tipo = $_GET['tipo'];
-	$cant = $_GET['cant'];
-	$sum = 0;	
 
-	//echo $result["roll"] . $tipo . $cant;
-	$V = array();
-	for($i=0;$i<$cant;$i++)
+	$res2 = $db->query('SELECT * from variables;');	
+	$result2 = $res2->fetch();
+	$time = abs(time() - $result2['tiempo']);
+	if($time > 4)
 	{
-		$V[$i] = rand(1, $tipo);
-		$upd = $db->prepare("UPDATE tabla set roll = :roll where id = :id");
-		$upd->execute(array("roll" => $V[$i], "id" => $i+1));
+
+		$tipo = $_POST['tipo'];
+		$cant = $_POST['cant'];
+		$sum = 0;	
+
+		//echo $result["roll"] . $tipo . $cant;
+		$V = array();
+		for($i=0;$i<$cant;$i++)
+		{
+			$V[$i] = rand(1, $tipo);
+			$upd = $db->prepare("UPDATE tabla set roll = :roll where id = :id");
+			$upd->execute(array("roll" => $V[$i], "id" => $i+1));
+		}
+		$res = $db->query('SELECT * from tabla;');
+		$result = $res->fetchAll();
+		
+
+
+		
+			
+
+		
+		$upd2 = $db->prepare("UPDATE variables set tipoDados = :tipo, tiempo = :tiempo, cantidad = :cant");
+		$upd2->execute(array("tipo" => $tipo, "tiempo" => time(), "cant" => $cant));
+
 	}
+}
+else
+{
 	$res = $db->query('SELECT * from tabla;');
 	$result = $res->fetchAll();
-	
-
-
-	
-	for($i=0;$i<$cant;$i++)
+	$res2 = $db->query('SELECT * from variables;');
+	$result2 = $res2->fetch()['cantidad'];
+	$sum = 0;
+	for($i=0;$i<$result2;$i++)
 	{
-		$sum += $V[$i];
-	}	
-
-	
-	for($i=0;$i<$cant;$i++)
-	{
-		echo $time . "<br>";
-		echo $sum . "<br>";
-		echo $tipo . "<br>";
+		$sum += $result[$i]["roll"];
 		echo $result[$i]["roll"] . "<br>";
 		echo "<br>";
 	}
-	$upd2 = $db->prepare("UPDATE variables set tipoDados = :tipo, tiempo = :tiempo, cantidad = :cant");
-	$upd2->execute(array("tipo" => $tipo, "tiempo" => time(), "cant" => $cant));
+	echo "<h3>".$sum . "</h3><br>";
+
+
 
 }
-
 ?>

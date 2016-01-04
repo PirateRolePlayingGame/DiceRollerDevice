@@ -9,7 +9,7 @@
 <body>
 <div class="container">
 	<div class="well text-center">
-		<form class="form-inline" id="forml" action="actualizar.php" method="POST">
+		<form class="form-inline" id="forml" action="" onsubmit="return(roleada())" method="POST">
 
 			Tipo de dados  <select class="form-control" id="tipo">
     			<option>d4</option>
@@ -21,7 +21,7 @@
   			</select>
 
 			Cantidad  <input class="form-control" type="number" id="cant">
-			<button type="button" class="btn btn-default" onclick="roleada()">Roll</button>
+			<button type="submit" class="btn btn-default">Roll</button>
 		</form>
 	</div>
 	<span id="show">
