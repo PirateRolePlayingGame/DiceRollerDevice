@@ -66,9 +66,11 @@ else
 	$res = $db->query('SELECT * from tabla;');
 	$result = $res->fetchAll();
 	$res2 = $db->query('SELECT * from variables;');
-	$result2 = $res2->fetch()['cantidad'];
+	$result2 = $res2->fetch();
+	$cant = $result2['cantidad'];
+	$tipo = $result2['tipoDados'];
 	$sum = 0;
-	for($i=0;$i<$result2;$i++)
+	for($i=0;$i<$cant;$i++)
 	{
 		$sum += $result[$i]["roll"];
 		if(($i+1) % 3 == 0)
@@ -80,7 +82,29 @@ else
 			echo $result[$i]["roll"] . "&nbsp &nbsp &nbsp";
 		}
 	}
-	echo "<h2>".$sum . "</h2><br>";
+
+	switch($tipo)
+	{
+		case 4:
+			$tipo = '<span class="big-dice icon-Dice-d4-Opaque"></span>';
+			break;
+		case 6:
+			$tipo = '<span class="big-dice icon-Dice-d6-Opaque"></span>';
+			break;
+		case 8:
+			$tipo = '<span class="big-dice icon-Dice-d8-Opaque"></span>';
+			break;
+		case 10:
+			$tipo = '<span class="big-dice icon-Dice-d10-Opaque"></span>';
+			break;
+		case 12:
+			$tipo = '<span class="big-dice icon-Dice-d12-Opaque"></span>';
+			break;
+		case 20:
+			$tipo = '<span class="big-dice icon-Dice-d20-Opaque"></span>';
+			break;
+	}
+	echo "<h2>" . $tipo . $sum . "</h2><br>";
 
 
 
